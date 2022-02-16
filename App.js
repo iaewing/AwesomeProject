@@ -6,10 +6,10 @@ import {
   View,
   Text,
   TextInput,
+  SectionList,
   StyleSheet,
   ScrollView,
 } from "react-native";
-
 
 const logo = {
   uri: "https://reactnative.dev/img/tiny_logo.png",
@@ -143,6 +143,23 @@ const FlatListBasics = () => {
     </View>
   );
 };
+
+const SectionListBasics = () => {
+  return (
+    <View style={styles.container}>
+      <SectionList
+      sections={[
+        {title: 'Pineapple', data: ['Devin', 'Dan', 'Dominic']},
+        {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy']},
+      ]}
+      renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
+      renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+      keyExtractor={(item, index) => index}
+      />
+    </View>
+  )
+};
+
 const styles = StyleSheet.create({
   topContainer: {
     marginTop: 32,
@@ -160,6 +177,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     height: 44,
   },
+  sectionHeader: {
+    paddingTop: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 2,
+    fontSize: 14,
+    fontWeight: 'bold',
+    backgroundColor: 'rgba(247,247,247,1.0)',
+  },
 });
 
-export default FlatListBasics;
+export default SectionListBasics;
